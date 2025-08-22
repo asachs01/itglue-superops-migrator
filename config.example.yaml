@@ -1,0 +1,204 @@
+# ITGlue to SuperOps Migration Tool Configuration
+# Copy this file to config.yaml and update with your settings
+
+# Source ITGlue Export Configuration
+source:
+  # Path to the ITGlue documents export folder
+  documents_path: "export-2/documents"
+  
+  # Path to the CSV metadata file (if available)
+  csv_path: "export-2/documents.csv"
+  
+  # Path to attachments folder
+  attachments_path: "export-2/attachments"
+
+# SuperOps API Configuration
+superops:
+  # Your SuperOps API token
+  # Get from: SuperOps Settings → Your Profile → API Token
+  api_token: "YOUR_API_TOKEN_HERE"
+  
+  # Your SuperOps subdomain (e.g., if your URL is acme.superops.ai, enter "acme")
+  subdomain: "your-subdomain"
+  
+  # API endpoint - usually "https://api.superops.ai/msp"
+  # Can also use "https://api.superops.ai/it" for IT endpoint
+  base_url: "https://api.superops.ai/msp"
+  
+  # API rate limit (requests per minute)
+  # SuperOps allows 800 req/min, we use 750 to be safe
+  rate_limit: 750
+  
+  # Request timeout in seconds
+  timeout: 30
+
+# Migration Settings
+migration:
+  # Use staging collection for initial import
+  use_staging: true
+  
+  # Name for the staging collection
+  staging_collection_name: "Migration Staging Queue"
+  
+  # Number of documents to process in each batch
+  batch_size: 10
+  
+  # Skip documents that already exist in SuperOps
+  skip_existing: true
+  
+  # Dry run mode - preview without making API calls
+  dry_run: false
+  
+  # Resume from last checkpoint if migration is interrupted
+  resume_on_failure: true
+  
+  # Add source metadata to documents
+  preserve_source_info: true
+  
+  # Maximum retries for failed operations
+  max_retries: 3
+  
+  # Delay between retries (seconds)
+  retry_delay: 5
+
+# Database Configuration
+database:
+  # Path to SQLite database for tracking migration state
+  path: "migration_state.db"
+  
+  # Enable WAL mode for better concurrency
+  wal_mode: true
+
+# Logging Configuration
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+  
+  # Enable console output
+  console: true
+  
+  # Log file path (set to null to disable file logging)
+  file: "logs/migration.log"
+  
+  # Log format: "json" or "text"
+  format: "text"
+  
+  # Maximum log file size in bytes (10MB)
+  rotation_size: 10485760
+  
+  # Number of days to retain log files
+  retention_days: 30
+  
+  # Include timestamps in logs
+  timestamps: true
+
+# Processing Options
+processing:
+  # Clean HTML content
+  clean_html: true
+  
+  # Process embedded images
+  process_images: true
+  
+  # Process file attachments
+  process_attachments: true
+  
+  # Extract and preserve internal links
+  preserve_links: true
+  
+  # Maximum image size to process (bytes)
+  max_image_size: 10485760  # 10MB
+  
+  # Maximum attachment size (bytes)
+  max_attachment_size: 52428800  # 50MB
+
+# Document Type Detection
+document_types:
+  # Patterns to detect document types
+  procedural:
+    - "Prerequisites"
+    - "Procedures"
+    - "Process Name"
+  
+  template:
+    - "[DELETEME]"
+    - "TEMPLATE"
+    - "<<REPLACE>>"
+  
+  how_to:
+    - "How to"
+    - "Step-by-Step"
+    - "Instructions"
+  
+  configuration:
+    - "Configuration"
+    - "Settings"
+    - "Setup"
+
+# Category Mapping (ITGlue folder → SuperOps category)
+category_mapping:
+  "Processes": "Standard Operating Procedures"
+  "ProcessesStandard Operating Procedures": "Standard Operating Procedures"
+  "Documentation": "General Documentation"
+  "Templates": "Templates & Forms"
+  "Configurations": "Configuration Guides"
+  "Applications": "Software & Applications"
+  "Security": "Security Documentation"
+  
+  # Default category for unmapped folders
+  default: "General Knowledge Base"
+
+# Customer Organization (Optional)
+# Uncomment and configure if you want to organize by customer
+# customer_organization:
+#   # Enable customer-specific collections
+#   enabled: false
+#   
+#   # Parent collection for all customer docs
+#   parent_collection: "Client Documentation"
+#   
+#   # Customer name mappings (ITGlue → SuperOps)
+#   mappings:
+#     "ACME Corporation": "ACME Corp"
+#     "Contoso Ltd": "Contoso"
+#   
+#   # Default collection for unknown customers
+#   default_collection: "General Clients"
+
+# Performance Tuning
+performance:
+  # Enable parallel processing
+  parallel_processing: false
+  
+  # Number of concurrent workers
+  max_workers: 4
+  
+  # Memory limit (MB)
+  memory_limit: 1024
+  
+  # Enable caching
+  enable_cache: true
+  
+  # Cache size (MB)
+  cache_size: 100
+
+# Advanced Options
+advanced:
+  # Validate SSL certificates
+  verify_ssl: true
+  
+  # HTTP proxy (if required)
+  # proxy: "http://proxy.example.com:8080"
+  
+  # Custom headers for API requests
+  # custom_headers:
+  #   "X-Custom-Header": "value"
+  
+  # Enable debug mode (verbose output)
+  debug: false
+  
+  # Save failed documents for manual review
+  save_failures: true
+  
+  # Failed documents directory
+  failures_dir: "failed_documents"

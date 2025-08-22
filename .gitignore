@@ -1,0 +1,145 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv/
+.env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Project specific - Data and Exports
+export-2/
+export-*/
+exports/
+*.html
+*.csv
+documents/
+attachments/
+
+# Configuration with sensitive data
+config.yaml
+.env
+*.env
+env.*
+credentials.json
+secrets.yaml
+api_keys.json
+
+# Logs and temporary files
+*.log
+logs/
+migration.log
+migration_*.log
+nohup.out
+*.tmp
+*.temp
+.cache/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+migration_state.db
+*.db-journal
+*.db-wal
+
+# Migration state and progress
+migration_progress.json
+migration_report_*.json
+staging_plan.json
+customer_patterns.json
+document_structure_analysis.json
+failed_documents/
+
+# Test files
+test_*.py
+*_test.py
+test_data/
+tests/output/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# Task Master specific
+.taskmaster/tasks/tasks.json
+.taskmaster/config.json
+.taskmaster/reports/
+migration_progress.json
+
+# Documentation builds
+docs/_build/
+docs/.doctrees/
+site/
+mkdocs.yml
+
+# Backup files
+*.bak
+*.backup
+*.old
+~*
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Keep these files
+!.gitignore
+!.gitkeep
+!requirements.txt
+!pyproject.toml
+!poetry.lock
+!README.md
+!LICENSE
+!CONTRIBUTING.md
+!CHANGELOG.md
+!config.example.yaml
+!.taskmaster/docs/prd.txt
+!.taskmaster/CLAUDE.md
