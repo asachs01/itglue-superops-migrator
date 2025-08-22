@@ -14,6 +14,12 @@ Enterprise-grade Python tool for migrating ITGlue document exports to SuperOps K
 - 🛡️ **Error Recovery**: Automatic retry with exponential backoff for transient failures
 - 📈 **Detailed Reporting**: Migration statistics and audit trails
 
+## Project Status
+
+✅ **Production Ready** - Successfully migrated 638+ documents in production environment.
+
+This tool has been tested and proven in production, successfully migrating large document collections from ITGlue to SuperOps.ai. The migration process handles complex HTML documents, preserves formatting, and maintains document relationships.
+
 ## Architecture
 
 ```
@@ -36,8 +42,8 @@ ITGlue Exports → Parser → Transformer → SuperOps API
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd superops_import
+git clone https://github.com/asachs01/itglue-superops-migrator.git
+cd itglue-superops-migrator
 
 # Install Poetry if not already installed
 curl -sSL https://install.python-poetry.org | python3 -
@@ -455,7 +461,9 @@ superops_import/
 
 ## License
 
-Proprietary - WYRE Technology
+MIT License - See [LICENSE](LICENSE) file for details.
+
+Copyright (c) 2025 WYRE Technology
 
 ## Support
 
