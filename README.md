@@ -150,9 +150,9 @@ itglue-migrate report --output migration-report.txt
 You can override configuration using environment variables:
 
 ```bash
-export SUPEROPS__API_TOKEN=your_token
-export SUPEROPS__SUBDOMAIN=your-subdomain
-export MIGRATION__DRY_RUN=true
+export SUPEROPS_API_TOKEN=your_token
+export SUPEROPS_SUBDOMAIN=your-subdomain
+export MIGRATION_DRY_RUN=true
 ```
 
 ### Using .env File
@@ -160,11 +160,11 @@ export MIGRATION__DRY_RUN=true
 Create a `.env` file in the project root:
 
 ```env
-SUPEROPS__API_TOKEN=your_token_here
-SUPEROPS__SUBDOMAIN=your-subdomain
-SUPEROPS__DATA_CENTER=us
-MIGRATION__BATCH_SIZE=20
-LOGGING__LEVEL=DEBUG
+SUPEROPS_API_TOKEN=your_token_here
+SUPEROPS_SUBDOMAIN=your-subdomain
+SUPEROPS_DATA_CENTER=us
+MIGRATION_BATCH_SIZE=20
+LOGGING_LEVEL=DEBUG
 ```
 
 ## Customer Organization & Staging

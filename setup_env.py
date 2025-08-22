@@ -30,37 +30,37 @@ def setup_env():
         print("  Please add SUPEROPS_API_TOKEN to your .env file")
     
     # Check subdomain
-    if "SUPEROPS__SUBDOMAIN" not in env_vars:
+    if "SUPEROPS_SUBDOMAIN" not in env_vars:
         print("\n✗ Subdomain is not set")
         print("\nTo complete setup, add the following to your .env file:")
-        print("\n  SUPEROPS__SUBDOMAIN=your_subdomain")
+        print("\n  SUPEROPS_SUBDOMAIN=your_subdomain")
         print("\nWhere 'your_subdomain' is the first part of your SuperOps URL.")
         print("For example:")
         print("  - If your SuperOps URL is: acme.superops.com")
-        print("  - Set: SUPEROPS__SUBDOMAIN=acme")
+        print("  - Set: SUPEROPS_SUBDOMAIN=acme")
         
         subdomain = input("\nEnter your SuperOps subdomain (or press Enter to skip): ").strip()
         if subdomain:
-            env_vars["SUPEROPS__SUBDOMAIN"] = subdomain
-            print(f"  Will set: SUPEROPS__SUBDOMAIN={subdomain}")
+            env_vars["SUPEROPS_SUBDOMAIN"] = subdomain
+            print(f"  Will set: SUPEROPS_SUBDOMAIN={subdomain}")
     else:
-        print(f"✓ Subdomain is set: {env_vars['SUPEROPS__SUBDOMAIN']}")
+        print(f"✓ Subdomain is set: {env_vars['SUPEROPS_SUBDOMAIN']}")
     
     # Check data center
-    if "SUPEROPS__DATA_CENTER" not in env_vars:
+    if "SUPEROPS_DATA_CENTER" not in env_vars:
         print("\n✗ Data center is not set")
         data_center = input("Enter your data center (us/eu) [default: us]: ").strip().lower() or "us"
         if data_center in ["us", "eu"]:
-            env_vars["SUPEROPS__DATA_CENTER"] = data_center
-            print(f"  Will set: SUPEROPS__DATA_CENTER={data_center}")
+            env_vars["SUPEROPS_DATA_CENTER"] = data_center
+            print(f"  Will set: SUPEROPS_DATA_CENTER={data_center}")
         else:
             print("  Invalid data center. Using default: us")
-            env_vars["SUPEROPS__DATA_CENTER"] = "us"
+            env_vars["SUPEROPS_DATA_CENTER"] = "us"
     else:
-        print(f"✓ Data center is set: {env_vars['SUPEROPS__DATA_CENTER']}")
+        print(f"✓ Data center is set: {env_vars['SUPEROPS_DATA_CENTER']}")
     
     # Write updated .env file
-    if "SUPEROPS__SUBDOMAIN" in env_vars:
+    if "SUPEROPS_SUBDOMAIN" in env_vars:
         with open(env_file, "w") as f:
             for key, value in env_vars.items():
                 f.write(f"{key}={value}\n")

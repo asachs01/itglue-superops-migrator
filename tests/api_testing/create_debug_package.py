@@ -116,7 +116,7 @@ This package contains test scripts and documentation for debugging the ITGlue to
 2. Create .env file with:
    ```
    SUPEROPS_API_TOKEN=your_token_here
-   SUPEROPS__SUBDOMAIN=your_subdomain
+   SUPEROPS_SUBDOMAIN=your_subdomain
    ```
 3. Run any test script: `python3 test_create_category.py`
 

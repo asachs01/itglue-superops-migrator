@@ -193,7 +193,7 @@ class Config(BaseSettings):
                     data["superops"]["api_token"] = api_token
             
             if "subdomain" not in data["superops"] or not data["superops"]["subdomain"]:
-                subdomain = os.getenv("SUPEROPS__SUBDOMAIN")
+                subdomain = os.getenv("SUPEROPS_SUBDOMAIN")
                 if subdomain:
                     data["superops"]["subdomain"] = subdomain
         

@@ -14,7 +14,7 @@ async def get_kb_collection():
     """Get a KB collection to see its structure."""
     
     api_token = os.getenv("SUPEROPS_API_TOKEN")
-    subdomain = os.getenv("SUPEROPS__SUBDOMAIN")
+    subdomain = os.getenv("SUPEROPS_SUBDOMAIN")
     
     if not api_token or not subdomain:
         print("Missing API token or subdomain")

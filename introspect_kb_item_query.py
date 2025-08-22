@@ -14,7 +14,7 @@ async def introspect_kb_item():
     """Introspect the getKbItem query structure."""
     
     api_token = os.getenv("SUPEROPS_API_TOKEN")
-    subdomain = os.getenv("SUPEROPS__SUBDOMAIN")
+    subdomain = os.getenv("SUPEROPS_SUBDOMAIN")
     
     if not api_token or not subdomain:
         print("Missing API token or subdomain")

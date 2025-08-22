@@ -14,7 +14,7 @@ async def retrieve_kb_articles():
     """Retrieve and inspect existing KB articles."""
     
     api_token = os.getenv("SUPEROPS_API_TOKEN")
-    subdomain = os.getenv("SUPEROPS__SUBDOMAIN")
+    subdomain = os.getenv("SUPEROPS_SUBDOMAIN")
     
     if not api_token or not subdomain:
         print("Missing API token or subdomain")
