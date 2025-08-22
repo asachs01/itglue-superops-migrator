@@ -1,0 +1,87 @@
+# Ignore export data
+export-2/
+export-*/
+exports/
+documents/
+attachments/
+
+# Ignore logs
+*.log
+logs/
+migration_*.log
+nohup.out
+
+# Ignore databases
+*.db
+*.sqlite
+*.sqlite3
+migration_state.db
+*.db-journal
+*.db-wal
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv/
+.env/
+
+# Ignore environment and config with secrets
+.env
+*.env
+env.*
+credentials.json
+secrets.yaml
+api_keys.json
+
+# Ignore Task Master generated files
+.taskmaster/tasks/tasks.json
+.taskmaster/reports/
+migration_progress.json
+
+# Ignore test files
+test_*.py
+*_test.py
+test_data/
+tests/output/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ignore documentation builds
+docs/_build/
+docs/.doctrees/
+site/
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore archive files
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Ignore git
+.git/
+.gitignore
+
+# Keep important files
+!requirements.txt
+!README.md
+!LICENSE

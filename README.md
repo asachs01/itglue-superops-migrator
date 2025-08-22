@@ -28,9 +28,80 @@ ITGlue Exports → Parser → Transformer → SuperOps API
 
 ### Prerequisites
 
-- Python 3.10 or higher
 - ITGlue document exports (HTML format)
 - SuperOps API credentials
+- Either:
+  - Docker and Docker Compose (recommended)
+  - Python 3.10 or higher
+
+## Docker Quick Start (Recommended)
+
+### 1. Clone and Configure
+
+```bash
+# Clone the repository
+git clone https://github.com/asachs01/itglue-superops-migrator.git
+cd itglue-superops-migrator
+
+# Copy environment template
+cp .env.example .env
+
+# Edit .env with your configuration
+nano .env
+```
+
+### 2. Build and Run with Docker
+
+```bash
+# Build Docker image
+./docker-migrate.sh build
+
+# Validate configuration
+./docker-migrate.sh validate
+
+# Run dry-run to test (migrates 10 documents)
+./docker-migrate.sh dry-run --limit 10
+
+# Run full migration
+./docker-migrate.sh migrate
+
+# Or migrate to staging collection
+./docker-migrate.sh staging
+```
+
+### 3. Docker Compose Alternative
+
+```bash
+# Using docker-compose directly
+docker-compose build
+
+# Run migration
+docker-compose run --rm migrator python -m migrator.cli migrate
+
+# Interactive shell for debugging
+docker-compose run --rm migrator /bin/bash
+
+# View logs
+docker-compose logs -f migrator
+```
+
+### Docker Environment Variables
+
+Edit `.env` file:
+
+```env
+# Required
+SUPEROPS_API_TOKEN=your_token_here
+SUPEROPS_SUBDOMAIN=your_subdomain
+EXPORT_PATH=./path/to/export-2
+
+# Optional
+STAGING_COLLECTION_ID=2540036476765265920
+MIGRATION_BATCH_SIZE=10
+LOGGING_LEVEL=INFO
+```
+
+## Manual Installation
 
 ### Install with Poetry (Recommended)
 

@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  migrator:
+    build: .
+    container_name: itglue-superops-migrator
+    environment:
+      # SuperOps Configuration
+      SUPEROPS_API_TOKEN: ${SUPEROPS_API_TOKEN}
+      SUPEROPS_SUBDOMAIN: ${SUPEROPS_SUBDOMAIN}
+      SUPEROPS_DATA_CENTER: ${SUPEROPS_DATA_CENTER:-us}
+      
+      # Migration Configuration
+      MIGRATION_BATCH_SIZE: ${MIGRATION_BATCH_SIZE:-10}
+      MIGRATION_DRY_RUN: ${MIGRATION_DRY_RUN:-false}
+      MIGRATION_SKIP_EXISTING: ${MIGRATION_SKIP_EXISTING:-true}
+      
+      # Logging Configuration
+      LOGGING_LEVEL: ${LOGGING_LEVEL:-INFO}
+      
+      # Staging Collection (optional)
+      STAGING_COLLECTION_ID: ${STAGING_COLLECTION_ID:-}
+      
+    volumes:
+      # Mount your ITGlue export directory
+      - ${EXPORT_PATH:-./export-2}:/app/export-2:ro
+      
+      # Mount configuration file (optional)
+      - ./config.yaml:/app/config.yaml:ro
+      
+      # Persistent data for migration state
+      - migration-data:/app/data
+      
+      # Logs directory
+      - ./logs:/app/logs
+      
+    networks:
+      - migration-network
+    
+    # Uncomment to run migration automatically
+    # command: python -m migrator.cli migrate
+    
+    # Or run specific commands
+    # command: python -m migrator.cli migrate --limit 10 --dry-run
+    
+    # Interactive shell for debugging
+    # stdin_open: true
+    # tty: true
+    # command: /bin/bash
+
+  # Optional: Database viewer for migration state
+  db-viewer:
+    image: sqlitebrowser/sqlitebrowser:latest
+    container_name: migration-db-viewer
+    environment:
+      DISPLAY: ${DISPLAY:-:0}
+    volumes:
+      - migration-data:/data:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    networks:
+      - migration-network
+    profiles:
+      - debug
+    
+volumes:
+  migration-data:
+    name: itglue-superops-migration-data
+
+networks:
+  migration-network:
+    name: itglue-superops-network
